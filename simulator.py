@@ -1,5 +1,6 @@
 from tkinter import *
 from pokemon_data import *
+from moves_data import *
 from PIL import ImageTk, Image
 
 gen1 = {
@@ -155,6 +156,21 @@ gen1 = {
   "mew": 151
 }
 
+def damage_calculator(pokemon_curr,pokemon_opp,move):
+   stab = 1
+   type1 = 1
+   type2 = 1
+   roll = 1
+   crit = 1
+   hp = (2 *pokemon_opp['HP']) * (pokemon_opp['level'] / 100) + pokemon_opp['level'] + 10
+   print(hp)
+   attack = pokemon_curr['attack']*2*(pokemon_curr['level']/100) + 5
+   defense = pokemon_opp['defense']*2*(pokemon_opp['level']/100) + 5
+   damage = (2*pokemon_curr['level']*crit*0.2 + 2)*move['damage']*attack*(1/defense)
+   damage = (damage/50)+2
+
+   return damage
+
 dx_opp = 20
 dy_opp = 6.4
 dx_curr = 20
@@ -286,6 +302,8 @@ move3 = Button(moves_frame,text='move3')
 move3.grid(row=0,column=2,padx=10,pady=10)
 move4 = Button(moves_frame,text='move4')
 move4.grid(row=0,column=3,padx=10,pady=10)
+
+print(damage_calculator(venusaur,mewtwo,power_whip))
 
 
 root.mainloop()
