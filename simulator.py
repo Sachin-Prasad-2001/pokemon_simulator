@@ -155,10 +155,10 @@ gen1 = {
   "mew": 151
 }
 
-dx_opp = 10
-dy_opp = 3.2
-dx_curr = 10
-dy_curr = 3.2
+dx_opp = 20
+dy_opp = 6.4
+dx_curr = 20
+dy_curr = 6.4
 
 def opp_move1():
     x_opp,y_opp = battle_canvas.coords(opponent_pokemon_image)
@@ -258,6 +258,15 @@ opp_img = ImageTk.PhotoImage(opp_img)
 curr_img = Image.open(f"sprites/{get_key(curr_pokemon)}.png")
 curr_img = curr_img.resize((120, 120), Image.LANCZOS)
 curr_img = ImageTk.PhotoImage(curr_img)
+
+opp_health = 90
+curr_health = 20
+
+opp_hp1 = battle_canvas.create_rectangle(800,25,800+opp_health,35,fill='lightgreen',outline='')
+opp_hp2 = battle_canvas.create_rectangle(800+opp_health,25,900,35,fill='red',outline='')
+
+curr_hp1 = battle_canvas.create_rectangle(100,225,100+curr_health,235,fill='lightgreen',outline='')
+curr_hp2 = battle_canvas.create_rectangle(100+curr_health,225,200,235,fill='red',outline='')
 
 init_opp_x = 850
 init_curr_x = 150
